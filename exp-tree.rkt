@@ -58,3 +58,14 @@
       ((eq? (operator expr-tree) '/)
        (/ (eval-tree (left-op expr-tree)) (eval-tree (right-op expr-tree))))))
   (#t expr-tree)))
+
+;; returns a copy of the given expression tree with its leaf nodes replaced by
+;; the result of applying the high order function to the value of the leaf nodes
+;; e.g., each node v is replaced by (f v)
+
+(define (map-leaves f expr-tree)
+  (cond
+    ((pair? expr-tree) (list (map-leaves f (left-op expr-tree))
+                             (operator expr-tree)
+                             (map-leaves f (right-op expr-tree))))
+    (#t (f expr-tree))))
