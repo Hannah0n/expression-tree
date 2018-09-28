@@ -25,6 +25,18 @@
       (check-equal? '(14 - 2 / 0 + 2 * 3) (inorder (make-expr '(14 - 2) '/ (make-expr 0 '+ '(2 * 3))))))
     (test-case "test9"
       (check-equal? '(14 2 - 0 2 3 * + /) (postorder (make-expr '(14 - 2) '/ (make-expr 0 '+ '(2 * 3))))))))
+      
+# tests evaluating an expression tree and the higher-order function map-leaves
+(define test-eval-order
+  (test-suite "test-eval-order"
+    (test-case "test10"
+      (check-equal? 4 1/2 (eval-tree (make-expr '(4 + 5) '/ '(3 - 1)))))
+    (test-case "test11"
+      (check-equal? 2 (eval-tree (make-expr '(14 - 2) '/ (make-expr 0 '+ '(2 * 3))))))
+    (test-case "test12"
+      (check-equal? '(2 / (3 + 2)) (map-leaves (lambda (x) (+ x 1)) (make-expr 1 '/ '(2 + 1)))))))
 
+# runs tests
 (run-tests test-make-expr)
 (run-tests test-traversal)
+(run-tests test-eval-order)
