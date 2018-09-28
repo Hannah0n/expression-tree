@@ -17,5 +17,4 @@ An example of an arithmetic expression would be (+ 1 (* 2 (- 3 5))).
 A couple of assumptions made about expression trees are:
 
 1. Operators in the tree are all binary (i.e., have two operands)
-
 2. All of the leaves (operands) are simple integers
