@@ -1,7 +1,7 @@
 # expression-trees
 Functions similar to those of binary trees are implemented to manipulate expression trees in Racket.
 
-The idea behind the functions of expression trees and their behavior is particularly taken from the course offered by Hal Perkins at University of Washington.
+The idea behind the functions of expression trees and their behavior is taken from the course offered by Hal Perkins at the University of Washington.
 
 ## Expression trees
 
